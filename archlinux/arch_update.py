@@ -1,6 +1,9 @@
 from subprocess import run
 
-run('clear')
+def clear_screen():
+	run('clear')
+
+clear_screen()
 print('0) Обновить зеркала')
 print('1) Обновить систему')
 print('2) Очистить систему')
@@ -12,7 +15,7 @@ while num not in ['0', '1', '2']:
 	num = input('==> Введите цифру что нужно сделать: ')
 
 if num == '0':
-	run('clear')
+	clear_screen()
 	print('Обновление зеркал...')
 	try:
 		run('sudo reflector --verbose -c ua,pl,ro -l 10 -p https -a 24 \
@@ -22,7 +25,7 @@ if num == '0':
 	except:
 		print('\n** Обновление зеркал не удалось **\n')
 elif num == '1':
-	run('clear')
+	clear_screen()
 	print('Обновление системы...')
 	try:
 		run('sudo pacman -Syyu --noconfirm', shell=True, check=True)
